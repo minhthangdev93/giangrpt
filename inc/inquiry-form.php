@@ -101,6 +101,19 @@ function rpt_handle_inquiry_form_submit() {
 		'Reply-To: ' . $email,
 	);
 
+	if ( function_exists( 'rpt_telegram_notify_contact_inquiry' ) ) {
+		rpt_telegram_notify_contact_inquiry(
+			array(
+				'email'        => $email,
+				'phone'        => $phone,
+				'name'         => $name,
+				'company'      => $company,
+				'message'      => $message,
+				'product_note' => $product_note,
+			)
+		);
+	}
+
 	$sent = wp_mail(
 		rpt_get_inquiry_email(),
 		$subject,

@@ -202,6 +202,10 @@ function rpt_store_quote_request( $data ) {
 		update_post_meta( $post_id, $key, $value );
 	}
 
+	if ( function_exists( 'rpt_telegram_notify_quote_request' ) ) {
+		rpt_telegram_notify_quote_request( $data, (int) $post_id );
+	}
+
 	$body_lines = array(
 		'Yêu cầu báo giá mới',
 		'',

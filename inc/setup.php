@@ -134,6 +134,7 @@ function rpt_load_includes() {
 		'inquiry-form.php',
 		'performance.php',
 		'quote-request.php',
+		'telegram-settings.php',
 		'news.php',
 		'post-duplicate.php',
 		'home.php',
