@@ -3,22 +3,24 @@
 
   var slider = document.querySelector('[data-rpt-hero-slider]');
 
-  if (!slider) {
+  if (!slider || slider.getAttribute('data-rpt-hero-initialized') === '1') {
     return;
   }
+
+  slider.setAttribute('data-rpt-hero-initialized', '1');
 
   var slides = slider.querySelectorAll('[data-rpt-hero-slide]');
   var dots = slider.querySelectorAll('[data-rpt-hero-dot]');
   var prev = slider.querySelector('[data-rpt-hero-prev]');
   var next = slider.querySelector('[data-rpt-hero-next]');
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!slides.length) {
+  if (slides.length < 2) {
     return;
   }
 
   var current = 0;
-  var timer;
+  var timer = null;
+  var pausedByHover = false;
   var autoplayMs = parseInt(slider.getAttribute('data-rpt-hero-autoplay'), 10);
 
   if (!Number.isFinite(autoplayMs)) {
@@ -36,6 +38,7 @@
 
     dots.forEach(function (dot, i) {
       var isActive = i === current;
+
       dot.classList.toggle('is-active', isActive);
 
       if (isActive) {
@@ -54,23 +57,26 @@
     showSlide(current - 1);
   }
 
+  function stopAutoplay() {
+    if (timer !== null) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
   function startAutoplay() {
-    if (prefersReducedMotion || slides.length < 2) {
+    stopAutoplay();
+
+    if (pausedByHover || document.hidden) {
       return;
     }
 
-    window.clearInterval(timer);
     timer = window.setInterval(nextSlide, autoplayMs);
-  }
-
-  function stopAutoplay() {
-    window.clearInterval(timer);
   }
 
   if (prev) {
     prev.addEventListener('click', function (event) {
       event.preventDefault();
-      event.stopPropagation();
       prevSlide();
       startAutoplay();
     });
@@ -79,7 +85,6 @@
   if (next) {
     next.addEventListener('click', function (event) {
       event.preventDefault();
-      event.stopPropagation();
       nextSlide();
       startAutoplay();
     });
@@ -96,11 +101,24 @@
     });
   });
 
-  if (!prefersReducedMotion) {
-    slider.addEventListener('mouseenter', stopAutoplay);
-    slider.addEventListener('mouseleave', startAutoplay);
-    slider.addEventListener('focusin', stopAutoplay);
-    slider.addEventListener('focusout', startAutoplay);
+  slider.addEventListener('mouseenter', function () {
+    pausedByHover = true;
+    stopAutoplay();
+  });
+
+  slider.addEventListener('mouseleave', function () {
+    pausedByHover = false;
     startAutoplay();
-  }
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      stopAutoplay();
+      return;
+    }
+
+    startAutoplay();
+  });
+
+  startAutoplay();
 })();

@@ -68,3 +68,6 @@ $has_multiple = count( $slides ) > 1;
 		</div>
 	<?php endif; ?>
 </section>
+<?php if ( $has_multiple ) : ?>
+	<script src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/js/hero-slider.js?ver=' . rawurlencode( (string) rpt_get_asset_version( 'assets/js/hero-slider.js' ) ) ); ?>"></script>
+<?php endif; ?>

@@ -125,14 +125,6 @@ function rpt_enqueue_design_system() {
 		);
 
 		wp_enqueue_script(
-			'rpt-hero-slider',
-			get_stylesheet_directory_uri() . '/assets/js/hero-slider.js',
-			array(),
-			rpt_get_asset_version( 'assets/js/hero-slider.js' ),
-			rpt_get_theme_script_args()
-		);
-
-		wp_enqueue_script(
 			'rpt-home-carousel',
 			get_stylesheet_directory_uri() . '/assets/js/home-carousel.js',
 			array(),
