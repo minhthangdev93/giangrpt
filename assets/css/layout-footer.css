@@ -1,0 +1,283 @@
+/**
+ * Industrial Energy Framework — Site Footer
+ */
+
+.rpt-site-footer {
+  position: relative;
+  margin-top: auto;
+  color: var(--rpt-inverse-on-surface);
+  background-color: var(--rpt-industrial-navy);
+  background-image: var(--rpt-footer-bg-image, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.rpt-site-footer__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(3, 8, 19, 0.88) 0%,
+    rgba(26, 32, 44, 0.82) 45%,
+    rgba(0, 33, 64, 0.78) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rpt-site-footer__main,
+.rpt-site-footer__bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.rpt-site-footer__main {
+  padding-top: var(--rpt-section-padding-desktop);
+  padding-bottom: var(--rpt-stack-lg);
+}
+
+.rpt-site-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--rpt-stack-lg);
+}
+
+.rpt-site-footer__heading {
+  margin: 0 0 var(--rpt-stack-md);
+  padding-bottom: var(--rpt-stack-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--rpt-font-heading);
+  font-size: var(--rpt-body-lg-size);
+  line-height: var(--rpt-headline-md-line);
+  font-weight: var(--rpt-headline-md-weight);
+  color: var(--rpt-inverse-on-surface);
+}
+
+.rpt-site-footer__logo .custom-logo-link,
+.rpt-site-footer__logo img {
+  display: block;
+  max-height: 56px;
+  width: auto;
+}
+
+.rpt-site-footer__logo .custom-logo-link {
+  transition: opacity var(--rpt-transition-fast), transform var(--rpt-transition-fast);
+}
+
+.rpt-site-footer__logo .custom-logo-link:hover,
+.rpt-site-footer__logo .custom-logo-link:focus {
+  opacity: 0.92;
+  transform: scale(1.03);
+}
+
+.rpt-site-footer__title {
+  font-family: var(--rpt-font-heading);
+  font-size: var(--rpt-headline-md-size);
+  font-weight: var(--rpt-headline-md-weight);
+  color: var(--rpt-inverse-on-surface);
+  text-decoration: none;
+  transition: color var(--rpt-transition-fast), opacity var(--rpt-transition-fast);
+}
+
+.rpt-site-footer__title:hover,
+.rpt-site-footer__title:focus {
+  color: var(--rpt-electric-green);
+  opacity: 0.95;
+}
+
+.rpt-site-footer__description {
+  margin: var(--rpt-stack-md) 0 0;
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  line-height: var(--rpt-body-lg-line);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.rpt-footer-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rpt-footer-links li + li {
+  margin-top: 10px;
+}
+
+.rpt-footer-links a {
+  display: inline-block;
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  line-height: var(--rpt-body-md-line);
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  background-image: linear-gradient(var(--rpt-electric-green), var(--rpt-electric-green));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition:
+    color var(--rpt-transition-fast),
+    transform var(--rpt-transition-fast),
+    background-size var(--rpt-transition-normal);
+}
+
+.rpt-footer-links a:hover,
+.rpt-footer-links a:focus {
+  color: var(--rpt-electric-green);
+  transform: translateX(4px);
+  background-size: 100% 1px;
+}
+
+.rpt-site-footer__empty {
+  margin: 0;
+  font-size: var(--rpt-body-md-size);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.rpt-footer-contact {
+  margin: 0;
+}
+
+.rpt-footer-contact__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: var(--rpt-stack-sm);
+}
+
+.rpt-footer-contact__item:last-child {
+  margin-bottom: 0;
+}
+
+.rpt-footer-contact__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-top: 2px;
+  border-radius: var(--rpt-radius-full);
+  background: rgba(139, 249, 89, 0.14);
+  color: var(--rpt-electric-green);
+}
+
+.rpt-footer-contact__icon-svg {
+  display: block;
+}
+
+.rpt-footer-contact__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.rpt-footer-contact__label,
+.rpt-footer-contact__value {
+  margin: 0;
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  line-height: var(--rpt-body-lg-line);
+  display: inline;
+}
+
+.rpt-footer-contact__label {
+  font-weight: var(--rpt-label-bold-weight);
+  color: var(--rpt-inverse-on-surface);
+}
+
+.rpt-footer-contact__value {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.rpt-footer-contact__value a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  background-image: linear-gradient(var(--rpt-electric-green), var(--rpt-electric-green));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition:
+    color var(--rpt-transition-fast),
+    background-size var(--rpt-transition-normal);
+}
+
+.rpt-footer-contact__value a:hover,
+.rpt-footer-contact__value a:focus {
+  color: var(--rpt-electric-green);
+  background-size: 100% 1px;
+}
+
+.rpt-site-footer__cta {
+  margin-top: var(--rpt-stack-md);
+  width: 100%;
+  max-width: 280px;
+  transition:
+    background var(--rpt-transition-normal),
+    border-color var(--rpt-transition-normal),
+    color var(--rpt-transition-normal),
+    transform var(--rpt-transition-fast),
+    box-shadow var(--rpt-transition-fast);
+}
+
+.rpt-site-footer__cta:hover,
+.rpt-site-footer__cta:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.rpt-site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: var(--rpt-stack-md);
+  padding-bottom: var(--rpt-stack-md);
+}
+
+.rpt-site-footer__copyright {
+  margin: 0;
+  text-align: center;
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-label-sm-size);
+  line-height: var(--rpt-label-sm-line);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rpt-site-footer__logo .custom-logo-link,
+  .rpt-footer-links a,
+  .rpt-site-footer__cta {
+    transition: none;
+  }
+
+  .rpt-site-footer__logo .custom-logo-link:hover,
+  .rpt-site-footer__logo .custom-logo-link:focus,
+  .rpt-footer-links a:hover,
+  .rpt-footer-links a:focus,
+  .rpt-site-footer__cta:hover,
+  .rpt-site-footer__cta:focus {
+    transform: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .rpt-site-footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--rpt-stack-lg) var(--rpt-stack-md);
+  }
+}
+
+@media (max-width: 767px) {
+  .rpt-site-footer__main {
+    padding-top: var(--rpt-section-padding-mobile);
+    padding-bottom: var(--rpt-section-padding-mobile);
+  }
+
+  .rpt-site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--rpt-stack-lg);
+  }
+
+  .rpt-site-footer__cta {
+    max-width: none;
+  }
+}

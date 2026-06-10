@@ -1,0 +1,126 @@
+/**
+ * Industrial Energy Framework — Base Styles
+ * Reset and global typography/layout foundations.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  line-height: var(--rpt-body-md-line);
+  font-weight: var(--rpt-body-md-weight);
+  color: var(--rpt-on-background);
+  background: var(--rpt-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--rpt-font-heading);
+  color: var(--rpt-on-surface);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: var(--rpt-headline-lg-size);
+  line-height: var(--rpt-headline-lg-line);
+  font-weight: var(--rpt-headline-lg-weight);
+  letter-spacing: var(--rpt-headline-lg-letter);
+}
+
+h2 {
+  font-size: var(--rpt-headline-md-size);
+  line-height: var(--rpt-headline-md-line);
+  font-weight: var(--rpt-headline-md-weight);
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--rpt-headline-md-weight);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--rpt-stack-md);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--rpt-power-blue);
+  text-decoration: none;
+  transition: color var(--rpt-transition-fast);
+}
+
+a:hover,
+a:focus {
+  color: var(--rpt-tertiary-container);
+}
+
+ul,
+ol {
+  padding-left: var(--rpt-stack-md);
+}
+
+/* Layout utilities */
+.rpt-container {
+  width: 100%;
+  max-width: var(--rpt-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--rpt-container-margin);
+  padding-right: var(--rpt-container-margin);
+}
+
+.rpt-section {
+  padding-top: var(--rpt-section-padding-mobile);
+  padding-bottom: var(--rpt-section-padding-mobile);
+}
+
+.rpt-section--dim {
+  background: var(--rpt-surface-container-low);
+}
+
+.rpt-section--dark {
+  background: var(--rpt-industrial-navy);
+  color: var(--rpt-inverse-on-surface);
+}
+
+.rpt-section--dark h1,
+.rpt-section--dark h2,
+.rpt-section--dark h3,
+.rpt-section--dark h4,
+.rpt-section--dark h5,
+.rpt-section--dark h6 {
+  color: var(--rpt-inverse-on-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

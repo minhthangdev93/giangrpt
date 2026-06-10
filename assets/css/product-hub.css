@@ -1,0 +1,519 @@
+/**
+ * Industrial Energy Framework — B2B Product Hub
+ */
+
+.rpt-product-hub-page .site-content {
+  background: var(--rpt-surface-neutral, var(--rpt-surface-container-low));
+}
+
+.rpt-product-hub-page #primary,
+.rpt-product-hub-page .content-area,
+.rpt-product-hub-page .site-main {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.rpt-product-hub-page .inside-article {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rpt-product-hub-page .entry-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.rpt-product-hub {
+  width: 100%;
+  padding: var(--rpt-stack-md) 0 var(--rpt-section-padding-desktop);
+}
+
+.rpt-product-hub__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-md);
+}
+
+/* Ẩn breadcrumb WooCommerce mặc định ngoài hub container */
+.rpt-product-hub-page .entry-content > .woocommerce-breadcrumb {
+  display: none;
+}
+
+.rpt-product-hub__layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: var(--rpt-stack-lg);
+  align-items: start;
+}
+
+.rpt-product-hub__sidebar,
+.rpt-product-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-md);
+  width: 260px;
+  max-width: 260px;
+}
+
+.rpt-product-hub__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-md);
+  min-width: 0;
+  width: 100%;
+}
+
+.rpt-product-hub__panel {
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-default);
+  box-shadow: var(--rpt-shadow-technical);
+}
+
+/* Sidebar widgets */
+.rpt-product-hub-widget {
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-default);
+  overflow: hidden;
+  box-shadow: var(--rpt-shadow-technical);
+}
+
+.rpt-product-hub-widget__toggle {
+  display: none;
+}
+
+.rpt-product-hub-widget__title {
+  margin: 0;
+  padding: 14px var(--rpt-stack-md);
+  background: var(--rpt-electric-green);
+  color: var(--rpt-on-primary);
+  font-family: var(--rpt-font-heading);
+  font-size: var(--rpt-body-lg-size);
+  font-weight: var(--rpt-headline-md-weight);
+  line-height: var(--rpt-body-lg-line);
+}
+
+.rpt-product-hub-widget__title--contact {
+  background: var(--rpt-industrial-navy);
+}
+
+.rpt-product-hub-widget__empty {
+  margin: 0;
+  padding: var(--rpt-stack-md);
+  font-size: var(--rpt-body-md-size);
+  color: var(--rpt-on-surface-variant);
+}
+
+.rpt-product-sidebar-categories__title {
+  margin: 0;
+  padding: 14px var(--rpt-stack-md);
+  background: var(--rpt-electric-green);
+  color: var(--rpt-on-primary);
+  font-family: var(--rpt-font-heading);
+  font-size: var(--rpt-body-lg-size);
+  font-weight: var(--rpt-headline-md-weight);
+  line-height: var(--rpt-body-lg-line);
+}
+
+.rpt-product-sidebar-categories {
+  padding: 8px;
+}
+
+.rpt-sidebar-category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--rpt-on-surface);
+  text-decoration: none;
+  background: transparent;
+  transition: background var(--rpt-transition-fast), color var(--rpt-transition-fast);
+}
+
+.rpt-sidebar-category-name {
+  color: inherit;
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  font-weight: 400;
+  line-height: var(--rpt-body-md-line);
+  transition: color var(--rpt-transition-fast);
+}
+
+.rpt-sidebar-category-count {
+  flex: 0 0 auto;
+  min-width: 28px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #f1f2f4;
+  color: #8a8f98;
+  font-family: var(--rpt-font-body);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--rpt-transition-fast), color var(--rpt-transition-fast);
+}
+
+.rpt-sidebar-category-item:hover,
+.rpt-sidebar-category-item:focus-visible {
+  background: var(--rpt-surface-neutral, #f5f5f5);
+  color: var(--rpt-electric-green);
+}
+
+.rpt-sidebar-category-item:hover .rpt-sidebar-category-count,
+.rpt-sidebar-category-item:focus-visible .rpt-sidebar-category-count {
+  background: #f1f2f4;
+  color: #8a8f98;
+}
+
+.rpt-sidebar-category-item.is-active {
+  background: var(--rpt-surface-neutral, #f5f5f5);
+  color: var(--rpt-electric-green);
+}
+
+.rpt-sidebar-category-item.is-active .rpt-sidebar-category-name {
+  color: var(--rpt-electric-green);
+  font-weight: 500;
+}
+
+.rpt-sidebar-category-item.is-active .rpt-sidebar-category-count {
+  background: var(--rpt-electric-green);
+  color: #ffffff;
+}
+
+.rpt-sidebar-category-item.is-active:hover,
+.rpt-sidebar-category-item.is-active:focus-visible {
+  background: var(--rpt-surface-neutral, #f5f5f5);
+  color: var(--rpt-electric-green);
+}
+
+.rpt-sidebar-category-item.is-active:hover .rpt-sidebar-category-count,
+.rpt-sidebar-category-item.is-active:focus-visible .rpt-sidebar-category-count {
+  background: var(--rpt-electric-green);
+  color: #ffffff;
+}
+
+.rpt-product-hub-contact {
+  margin: 0;
+  padding: var(--rpt-stack-md);
+}
+
+.rpt-product-hub-contact__item {
+  margin: 0 0 10px;
+}
+
+.rpt-product-hub-contact__item:last-child {
+  margin-bottom: 0;
+}
+
+.rpt-product-hub-contact__label,
+.rpt-product-hub-contact__value {
+  margin: 0;
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  line-height: var(--rpt-body-md-line);
+}
+
+.rpt-product-hub-contact__label {
+  color: var(--rpt-on-surface);
+  font-weight: 600;
+}
+
+.rpt-product-hub-contact__value {
+  color: var(--rpt-on-surface-variant);
+}
+
+.rpt-product-hub-contact__value a {
+  color: var(--rpt-power-blue);
+  text-decoration: none;
+}
+
+.rpt-product-hub-contact__value a:hover,
+.rpt-product-hub-contact__value a:focus {
+  color: var(--rpt-electric-green);
+}
+
+.rpt-product-hub-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 var(--rpt-stack-md) var(--rpt-stack-md);
+}
+
+.rpt-product-hub-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-sm);
+  color: var(--rpt-on-surface-variant);
+  background: var(--rpt-surface-container-low);
+  text-decoration: none;
+  transition: color var(--rpt-transition-fast), border-color var(--rpt-transition-fast), background var(--rpt-transition-fast);
+}
+
+.rpt-product-hub-social__link:hover,
+.rpt-product-hub-social__link:focus {
+  color: var(--rpt-electric-green);
+  border-color: var(--rpt-electric-green);
+  background: var(--rpt-surface-container-lowest);
+}
+
+.rpt-product-hub-widget__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - (var(--rpt-stack-md) * 2));
+  margin: 0 var(--rpt-stack-md) var(--rpt-stack-md);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 16px;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+/* Page title — full width trên layout 2 cột */
+.rpt-product-hub__title-block {
+  padding: var(--rpt-stack-lg) var(--rpt-stack-md);
+  text-align: center;
+}
+
+.rpt-product-hub__title {
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--rpt-electric-green);
+  display: inline-block;
+  font-family: var(--rpt-font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: var(--rpt-headline-lg-weight);
+  line-height: 1.2;
+  color: var(--rpt-on-surface);
+}
+
+.rpt-product-hub__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-md);
+}
+
+.rpt-product-hub__empty {
+  margin: 0;
+  padding: var(--rpt-stack-lg);
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-default);
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  color: var(--rpt-on-surface-variant);
+  text-align: center;
+}
+
+/* Category sections */
+.rpt-product-hub-category {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-sm);
+  width: 100%;
+}
+
+.rpt-product-hub-category__header-panel {
+  padding: 16px var(--rpt-stack-md);
+}
+
+.rpt-product-hub-category__products-panel {
+  padding: var(--rpt-stack-md);
+}
+
+.rpt-product-hub-category__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rpt-stack-md);
+}
+
+.rpt-product-hub-category__title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--rpt-font-heading);
+  font-size: var(--rpt-headline-md-size);
+  font-weight: var(--rpt-headline-md-weight);
+  line-height: var(--rpt-headline-md-line);
+  color: var(--rpt-on-surface);
+}
+
+.rpt-product-hub-category__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: 0 0 auto;
+  margin-left: 12px;
+  padding: 4px 0;
+  font-family: var(--rpt-font-body);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  color: var(--rpt-electric-green);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rpt-product-hub-category__more-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.rpt-product-hub-category__more:hover,
+.rpt-product-hub-category__more:focus {
+  color: var(--rpt-secondary);
+}
+
+/* Product grid — div custom, không dùng ul.products WooCommerce */
+.rpt-product-hub-page .rpt-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .rpt-product-hub__sidebar,
+  .rpt-product-sidebar {
+    position: sticky;
+    top: 88px;
+  }
+}
+
+@media (max-width: 991px) {
+  .rpt-product-hub__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rpt-product-hub__sidebar,
+  .rpt-product-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .rpt-product-hub-page .rpt-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .rpt-product-hub-page .rpt-product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .rpt-product-hub-page .rpt-product-card__button {
+    white-space: normal;
+  }
+
+  .rpt-product-hub {
+    padding-top: var(--rpt-stack-sm);
+    padding-bottom: var(--rpt-section-padding-mobile);
+  }
+
+  .rpt-product-hub-widget--categories .rpt-product-hub-widget__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 14px var(--rpt-stack-md);
+    border: 0;
+    background: var(--rpt-electric-green);
+    color: var(--rpt-on-primary);
+    font-family: var(--rpt-font-heading);
+    font-size: var(--rpt-body-lg-size);
+    font-weight: var(--rpt-headline-md-weight);
+    cursor: pointer;
+  }
+
+  .rpt-product-hub-widget--categories .rpt-product-sidebar-categories__title {
+    display: none;
+  }
+
+  .rpt-product-hub-widget--categories .rpt-product-hub-widget__body {
+    display: none;
+  }
+
+  .rpt-product-hub-widget--categories.is-open .rpt-product-hub-widget__body {
+    display: block;
+  }
+
+  .rpt-product-hub-widget__toggle-icon {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform var(--rpt-transition-fast);
+  }
+
+  .rpt-product-hub-widget--categories.is-open .rpt-product-hub-widget__toggle-icon {
+    transform: rotate(-135deg);
+  }
+
+  .rpt-product-hub-category__header {
+    align-items: center;
+  }
+
+  .rpt-product-hub-category__title {
+    font-size: var(--rpt-body-lg-size);
+    line-height: var(--rpt-body-lg-line);
+  }
+
+  .rpt-product-hub-page .rpt-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Categories expanded by default; contact card after product sections */
+  .rpt-product-hub-page .rpt-product-hub__layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rpt-stack-md);
+  }
+
+  .rpt-product-hub-page .rpt-product-hub__sidebar {
+    display: contents;
+  }
+
+  .rpt-product-hub-page .rpt-product-hub-widget--categories {
+    order: 1;
+    width: 100%;
+  }
+
+  .rpt-product-hub-page .rpt-product-hub__content {
+    order: 2;
+    width: 100%;
+  }
+
+  .rpt-product-hub-page .rpt-product-hub-widget--contact {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .rpt-product-hub-page .rpt-product-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,119 @@
+/**
+ * Industrial Energy Framework — Responsive Layout
+ * Mobile-first grid and breakpoint adjustments.
+ */
+
+/* Grid system */
+.rpt-grid {
+  display: grid;
+  gap: var(--rpt-gutter);
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: var(--rpt-container-margin);
+  margin-right: var(--rpt-container-margin);
+}
+
+.rpt-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.rpt-grid--3 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.rpt-inquiry-form__row {
+  grid-template-columns: 1fr;
+}
+
+/* Mobile (default) */
+@media (max-width: 767px) {
+  h1 {
+    font-size: var(--rpt-headline-lg-mobile-size);
+    line-height: var(--rpt-headline-lg-mobile-line);
+    font-weight: var(--rpt-headline-lg-mobile-weight);
+    letter-spacing: var(--rpt-headline-lg-mobile-letter);
+  }
+
+  .rpt-section {
+    padding-top: var(--rpt-section-padding-mobile);
+    padding-bottom: var(--rpt-section-padding-mobile);
+  }
+
+  .woocommerce div.product .product_title {
+    font-size: var(--rpt-headline-lg-mobile-size);
+    line-height: var(--rpt-headline-lg-mobile-line);
+    font-weight: var(--rpt-headline-lg-mobile-weight);
+    letter-spacing: var(--rpt-headline-lg-mobile-letter);
+  }
+
+  .rpt-cta-block__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rpt-cta-block__actions .rpt-btn {
+    width: 100%;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .rpt-grid {
+    grid-template-columns: repeat(8, 1fr);
+    max-width: var(--rpt-container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--rpt-container-margin);
+    padding-right: var(--rpt-container-margin);
+  }
+
+  .rpt-grid--2 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .rpt-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rpt-section {
+    padding-top: var(--rpt-section-padding-desktop);
+    padding-bottom: var(--rpt-section-padding-desktop);
+  }
+
+  .rpt-inquiry-form__row--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .woocommerce ul.products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .rpt-grid {
+    max-width: var(--rpt-container-max);
+  }
+
+  .rpt-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rpt-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rpt-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .woocommerce ul.products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .rpt-container,
+  .rpt-grid {
+    max-width: var(--rpt-container-max);
+  }
+}

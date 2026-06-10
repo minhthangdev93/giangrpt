@@ -1,0 +1,121 @@
+/**
+ * Industrial Energy Framework — Design Tokens
+ * Single source of truth for all RPT design variables.
+ */
+
+:root {
+  /* A. Color tokens */
+  --rpt-surface: #fcf8f9;
+  --rpt-surface-dim: #dcd9da;
+  --rpt-surface-bright: #fcf8f9;
+  --rpt-surface-container-lowest: #ffffff;
+  --rpt-surface-container-low: #f6f3f4;
+  --rpt-surface-container: #f0edee;
+  --rpt-surface-container-high: #eae7e8;
+  --rpt-surface-container-highest: #e5e2e3;
+
+  --rpt-on-surface: #1b1b1c;
+  --rpt-on-surface-variant: #45474c;
+  --rpt-inverse-surface: #313031;
+  --rpt-inverse-on-surface: #f3f0f1;
+
+  --rpt-outline: #76777c;
+  --rpt-outline-variant: #c6c6cc;
+
+  --rpt-primary: #030813;
+  --rpt-on-primary: #ffffff;
+  --rpt-primary-container: #1a202c;
+  --rpt-on-primary-container: #828796;
+
+  --rpt-secondary: #256d00;
+  --rpt-on-secondary: #ffffff;
+  --rpt-secondary-container: #8bf959;
+  --rpt-on-secondary-container: #277100;
+
+  --rpt-tertiary: #000918;
+  --rpt-on-tertiary: #ffffff;
+  --rpt-tertiary-container: #002140;
+  --rpt-on-tertiary-container: #4f8ad0;
+
+  --rpt-error: #ba1a1a;
+  --rpt-on-error: #ffffff;
+  --rpt-error-container: #ffdad6;
+  --rpt-on-error-container: #93000a;
+
+  --rpt-background: #fcf8f9;
+  --rpt-on-background: #1b1b1c;
+  --rpt-surface-variant: #e5e2e3;
+
+  --rpt-electric-green: #43ae09;
+  --rpt-hot-sale: #e53935;
+  --rpt-hot-sale-hover: #c62828;
+  --rpt-on-hot-sale: #ffffff;
+  --rpt-industrial-navy: #1a202c;
+  --rpt-power-blue: #2b6cb0;
+  --rpt-status-warning: #ed8936;
+  --rpt-surface-neutral: #f5f5f5;
+
+  /* B. Typography tokens */
+  --rpt-font-heading: "Space Grotesk", sans-serif;
+  --rpt-font-body: "Hanken Grotesk", sans-serif;
+
+  --rpt-headline-lg-size: 32px;
+  --rpt-headline-lg-line: 40px;
+  --rpt-headline-lg-weight: 700;
+  --rpt-headline-lg-letter: -0.02em;
+
+  --rpt-headline-lg-mobile-size: 26px;
+  --rpt-headline-lg-mobile-line: 32px;
+  --rpt-headline-lg-mobile-weight: 700;
+  --rpt-headline-lg-mobile-letter: -0.01em;
+
+  --rpt-headline-md-size: 24px;
+  --rpt-headline-md-line: 32px;
+  --rpt-headline-md-weight: 600;
+
+  --rpt-body-lg-size: 18px;
+  --rpt-body-lg-line: 28px;
+  --rpt-body-lg-weight: 400;
+
+  --rpt-body-md-size: 16px;
+  --rpt-body-md-line: 24px;
+  --rpt-body-md-weight: 400;
+
+  --rpt-label-bold-size: 14px;
+  --rpt-label-bold-line: 20px;
+  --rpt-label-bold-weight: 700;
+  --rpt-label-bold-letter: 0.05em;
+
+  --rpt-label-sm-size: 12px;
+  --rpt-label-sm-line: 16px;
+  --rpt-label-sm-weight: 500;
+
+  /* C. Radius tokens */
+  --rpt-radius-sm: 0.125rem;
+  --rpt-radius-default: 0.25rem;
+  --rpt-radius-md: 0.375rem;
+  --rpt-radius-lg: 0.5rem;
+  --rpt-radius-xl: 0.75rem;
+  --rpt-radius-full: 9999px;
+
+  /* D. Spacing tokens */
+  --rpt-space-base: 8px;
+  --rpt-container-margin: 16px;
+  --rpt-gutter: 12px;
+  --rpt-stack-sm: 4px;
+  --rpt-stack-md: 16px;
+  --rpt-stack-lg: 32px;
+
+  --rpt-section-padding-mobile: 48px;
+  --rpt-section-padding-desktop: 80px;
+  --rpt-container-max: 1200px;
+
+  /* E. Border, shadow, transition tokens */
+  --rpt-border-light: 1px solid var(--rpt-outline-variant);
+  --rpt-border-dark: 1px solid rgba(26, 32, 44, 0.18);
+
+  --rpt-shadow-technical: 4px 4px 12px rgba(26, 32, 44, 0.1);
+
+  --rpt-transition-fast: 160ms ease;
+  --rpt-transition-normal: 240ms ease;
+}

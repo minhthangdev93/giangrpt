@@ -1,0 +1,357 @@
+/**
+ * Industrial Energy Framework — Contact Page
+ */
+
+.rpt-contact-page-body .site-content {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  background: var(--rpt-surface-neutral, #f5f5f5);
+}
+
+.rpt-contact-page-body #primary,
+.rpt-contact-page-body .content-area,
+.rpt-contact-page-body .site-main,
+.rpt-contact-page-body article,
+.rpt-contact-page-body .inside-article {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+body.rpt-contact-page-body.separate-containers .site-main,
+body.rpt-contact-page-body.one-container .site-content {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.rpt-contact-page-body .site-main > * {
+  margin-bottom: 0;
+}
+
+.rpt-contact-page-body .inside-article,
+.rpt-contact-page-body .entry-content {
+  padding: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.rpt-contact-page-body .entry-header {
+  display: none;
+}
+
+.rpt-contact-page {
+  width: 100%;
+  padding: var(--rpt-stack-md) 0 var(--rpt-section-padding-desktop);
+  box-sizing: border-box;
+}
+
+.rpt-contact-page__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-lg);
+  width: 100%;
+  max-width: var(--rpt-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Shared section title accent */
+.rpt-contact-hero,
+.rpt-contact-location__header {
+  text-align: center;
+}
+
+.rpt-contact-hero__title,
+.rpt-contact-location__title {
+  margin: 0;
+  font-family: var(--rpt-font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.2;
+  font-weight: var(--rpt-headline-lg-weight);
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-hero__accent,
+.rpt-contact-location__accent {
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: var(--rpt-radius-full);
+  background: var(--rpt-electric-green);
+}
+
+/* Rep card */
+.rpt-contact-rep {
+  display: flex;
+  justify-content: center;
+}
+
+.rpt-contact-rep__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+  max-width: 520px;
+  padding: 20px 24px;
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-lg);
+  box-shadow: var(--rpt-shadow-technical);
+}
+
+.rpt-contact-rep__avatar {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--rpt-radius-full);
+  overflow: hidden;
+}
+
+.rpt-contact-rep__avatar-img,
+.rpt-contact-rep__avatar-placeholder {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.rpt-contact-rep__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rpt-contact-rep__name {
+  margin: 0 0 10px;
+  font-family: var(--rpt-font-heading);
+  font-size: 1.125rem;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-rep__list {
+  margin: 0;
+}
+
+.rpt-contact-rep__item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  margin: 0 0 4px;
+  font-family: var(--rpt-font-body);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.rpt-contact-rep__item:last-child {
+  margin-bottom: 0;
+}
+
+.rpt-contact-rep__label,
+.rpt-contact-rep__value {
+  margin: 0;
+}
+
+.rpt-contact-rep__label {
+  color: var(--rpt-on-surface);
+  font-weight: 600;
+}
+
+.rpt-contact-rep__value {
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-rep__value a {
+  color: var(--rpt-power-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.rpt-contact-rep__value a:hover,
+.rpt-contact-rep__value a:focus {
+  color: var(--rpt-electric-green);
+}
+
+/* Form section */
+.rpt-contact-form-section__card {
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-lg);
+  box-shadow: var(--rpt-shadow-technical);
+  padding: 36px 40px;
+}
+
+.rpt-contact-form-section__title {
+  margin: 0 0 10px;
+  text-align: center;
+  font-family: var(--rpt-font-heading);
+  font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-form-section__intro {
+  margin: 0 0 28px;
+  text-align: center;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--rpt-font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--rpt-on-surface-variant);
+}
+
+.rpt-contact-notice {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: var(--rpt-radius-default);
+  font-family: var(--rpt-font-body);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.rpt-contact-notice--success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #166534;
+}
+
+.rpt-contact-notice--error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #991b1b;
+}
+
+.rpt-contact-form .rpt-input,
+.rpt-contact-form .rpt-textarea {
+  background: var(--rpt-surface-neutral, #f5f5f5);
+  border-color: var(--rpt-outline-variant);
+}
+
+.rpt-contact-form__message {
+  min-height: 180px;
+}
+
+.rpt-contact-form__file {
+  width: 100%;
+  font-family: var(--rpt-font-body);
+  font-size: 14px;
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-form__file-hint {
+  margin: 8px 0 0;
+  font-family: var(--rpt-font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--rpt-on-surface-variant);
+}
+
+.rpt-inquiry-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: var(--rpt-stack-sm);
+  scroll-margin-top: 100px;
+}
+
+.rpt-contact-form__submit {
+  width: 100%;
+  min-height: 52px;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+}
+
+/* Location */
+.rpt-contact-location__card {
+  margin-top: 28px;
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-lg);
+  box-shadow: var(--rpt-shadow-technical);
+  padding: 32px 36px;
+}
+
+.rpt-contact-location__company {
+  margin: 0 0 12px;
+  font-family: var(--rpt-font-heading);
+  font-size: 1.25rem;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-location__address {
+  margin: 0 0 24px;
+  font-family: var(--rpt-font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--rpt-on-surface);
+}
+
+.rpt-contact-location__address strong {
+  font-weight: 700;
+}
+
+.rpt-contact-location__map {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--rpt-radius-default);
+  border: 1px solid var(--rpt-outline-variant);
+  background: var(--rpt-surface-neutral);
+  aspect-ratio: 16 / 9;
+}
+
+.rpt-contact-location__map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
+}
+
+@media (max-width: 767px) {
+  .rpt-contact-page {
+    padding: var(--rpt-stack-sm) 0 var(--rpt-section-padding-mobile);
+  }
+
+  .rpt-contact-page .rpt-container,
+  .rpt-contact-page__container {
+    padding-left: 12px;
+    padding-right: 12px;
+    gap: var(--rpt-stack-md);
+  }
+
+  .rpt-contact-rep__card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 18px;
+  }
+
+  .rpt-contact-rep__item {
+    justify-content: center;
+  }
+
+  .rpt-contact-form-section__card {
+    padding: 24px 18px;
+  }
+
+  .rpt-contact-location__card {
+    padding: 22px 18px;
+  }
+
+  .rpt-contact-location__map iframe {
+    min-height: 260px;
+  }
+}

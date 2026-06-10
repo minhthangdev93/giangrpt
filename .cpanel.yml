@@ -1,0 +1,7 @@
+---
+# Chạy khi bấm "Deploy HEAD Commit" trên cPanel → Git Version Control
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/cizuzaxe/giang.annamdiscovery.vn/wp-content/themes/generatepress_child/
+    - /bin/cp -R assets inc template-parts page-templates woocommerce $DEPLOYPATH
+    - /bin/cp -f functions.php home.php front-page.php content-single.php single-rpt_video.php style.css $DEPLOYPATH

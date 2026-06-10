@@ -1,0 +1,201 @@
+/**
+ * Industrial Energy Framework — B2B Product Category Archive
+ */
+
+.rpt-product-category-page .site-content {
+  background: var(--rpt-surface-neutral, var(--rpt-surface-container-low));
+}
+
+.rpt-product-category-page #primary,
+.rpt-product-category-page .content-area,
+.rpt-product-category-page .site-main {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.rpt-product-category-page .inside-article {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rpt-product-category-page .entry-content {
+  padding-top: 0;
+  padding-bottom: 0;
+  max-width: none;
+  width: 100%;
+}
+
+.rpt-product-category-page .entry-content > .woocommerce-breadcrumb {
+  display: none;
+}
+
+.rpt-product-category-page {
+  width: 100%;
+  padding: var(--rpt-stack-md) 0 var(--rpt-section-padding-desktop);
+}
+
+.rpt-product-category-page__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpt-stack-md);
+}
+
+/* Category header */
+.rpt-category-header {
+  text-align: center;
+  padding-top: var(--rpt-stack-sm);
+}
+
+.rpt-category-title {
+  margin: 0;
+  font-family: var(--rpt-font-heading);
+  font-size: var(--rpt-headline-lg-size);
+  font-weight: var(--rpt-headline-lg-weight);
+  line-height: var(--rpt-headline-lg-line);
+  color: var(--rpt-on-surface);
+}
+
+.rpt-title-underline {
+  width: 48px;
+  height: 4px;
+  margin: var(--rpt-stack-sm) auto 0;
+  border-radius: var(--rpt-radius-full);
+  background: var(--rpt-electric-green);
+}
+
+.rpt-category-products {
+  min-width: 0;
+  width: 100%;
+}
+
+.rpt-category-products__empty {
+  margin: 0;
+  padding: var(--rpt-stack-lg);
+  text-align: center;
+  font-size: var(--rpt-body-md-size);
+  color: var(--rpt-on-surface-variant);
+  background: var(--rpt-surface-container-lowest);
+  border: var(--rpt-border-light);
+  border-radius: var(--rpt-radius-default);
+}
+
+/* Product grid — 3 columns on desktop */
+.rpt-product-category-page .rpt-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+/* Pagination */
+.rpt-category-pagination {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--rpt-stack-md);
+}
+
+.rpt-category-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rpt-category-pagination__page,
+.rpt-category-pagination__next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: var(--rpt-radius-sm);
+  border: var(--rpt-border-light);
+  background: var(--rpt-surface-container-lowest);
+  color: var(--rpt-on-surface-variant);
+  font-family: var(--rpt-font-body);
+  font-size: var(--rpt-body-md-size);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--rpt-transition-fast), color var(--rpt-transition-fast), border-color var(--rpt-transition-fast);
+}
+
+.rpt-category-pagination__page:hover,
+.rpt-category-pagination__page:focus,
+.rpt-category-pagination__next:hover,
+.rpt-category-pagination__next:focus {
+  color: var(--rpt-industrial-navy);
+  border-color: var(--rpt-industrial-navy);
+}
+
+.rpt-category-pagination__page.is-current {
+  background: var(--rpt-electric-green);
+  border-color: var(--rpt-electric-green);
+  color: var(--rpt-on-primary);
+}
+
+.rpt-category-pagination__next {
+  min-width: auto;
+  font-weight: 500;
+}
+
+@media (max-width: 991px) {
+  .rpt-product-category-page .rpt-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .rpt-product-category-page {
+    padding-top: var(--rpt-stack-sm);
+    padding-bottom: var(--rpt-section-padding-mobile);
+  }
+
+  .rpt-category-title {
+    font-size: var(--rpt-headline-md-size);
+    line-height: var(--rpt-headline-md-line);
+  }
+
+  .rpt-product-category-page .rpt-product-card__button {
+    white-space: normal;
+  }
+
+  /* Categories expanded by default; contact card after product grid */
+  .rpt-product-category-page .rpt-product-hub__layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rpt-stack-md);
+  }
+
+  .rpt-product-category-page .rpt-product-hub__sidebar {
+    display: contents;
+  }
+
+  .rpt-product-category-page .rpt-product-hub-widget--categories {
+    order: 1;
+    width: 100%;
+  }
+
+  .rpt-product-category-page .rpt-category-products {
+    order: 2;
+    width: 100%;
+  }
+
+  .rpt-product-category-page .rpt-product-hub-widget--contact {
+    order: 3;
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .rpt-product-category-page .rpt-product-grid {
+    grid-template-columns: 1fr;
+  }
+}

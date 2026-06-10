@@ -1,0 +1,28 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# Dependencies / build (if added later)
+node_modules/
+vendor/
+*.map
+
+# Secrets — never commit
+.env
+.env.*
+*.pem
+
+# Archives / backups
+*.zip
+*.tar
+*.tar.gz
+*.sql
+
+# Logs
+*.log
+npm-debug.log*
