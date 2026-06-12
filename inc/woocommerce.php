@@ -247,11 +247,7 @@ function rpt_resolve_product_category_url_from_media( $url ) {
 		return $url;
 	}
 
-	$term = function_exists( 'rpt_get_product_cat_by_path' ) ? rpt_get_product_cat_by_path( $slug ) : null;
-
-	if ( ! $term instanceof WP_Term ) {
-		$term = get_term_by( 'slug', $slug, 'product_cat' );
-	}
+	$term = get_term_by( 'slug', $slug, 'product_cat' );
 
 	if ( $term instanceof WP_Term ) {
 		return rpt_get_product_category_link( $term );
