@@ -53,7 +53,7 @@ $product_categories = rpt_get_footer_product_categories();
 					<ul class="rpt-footer-links">
 						<?php foreach ( $product_categories as $term ) : ?>
 							<li>
-								<a href="<?php echo esc_url( get_term_link( $term ) ); ?>">
+								<a href="<?php echo esc_url( function_exists( 'rpt_get_product_category_link' ) ? rpt_get_product_category_link( $term ) : get_term_link( $term ) ); ?>">
 									<?php echo esc_html( $term->name ); ?>
 								</a>
 							</li>

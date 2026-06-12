@@ -14,7 +14,7 @@ if ( ! $term instanceof WP_Term ) {
 }
 
 $products  = rpt_get_shop_category_products( $term, 8 );
-$term_link = get_term_link( $term );
+$term_link = function_exists( 'rpt_get_product_category_link' ) ? rpt_get_product_category_link( $term ) : get_term_link( $term );
 
 if ( is_wp_error( $term_link ) || empty( $products ) ) {
 	return;

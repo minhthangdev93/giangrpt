@@ -221,6 +221,79 @@ function rpt_get_product_category_link( $term ) {
 }
 
 /**
+ * Map a media-library image URL back to a product category archive when slugs match.
+ *
+ * Useful when admins paste the category thumbnail URL into a link field by mistake.
+ *
+ * @param string $url Candidate URL.
+ * @return string
+ */
+function rpt_resolve_product_category_url_from_media( $url ) {
+	$url = trim( (string) $url );
+
+	if ( '' === $url || ! preg_match( '#\.(jpe?g|png|webp|gif|avif)(\?.*)?$#i', $url ) ) {
+		return $url;
+	}
+
+	$path = wp_parse_url( $url, PHP_URL_PATH );
+
+	if ( ! is_string( $path ) || '' === $path ) {
+		return $url;
+	}
+
+	$slug = sanitize_title( pathinfo( $path, PATHINFO_FILENAME ) );
+
+	if ( '' === $slug ) {
+		return $url;
+	}
+
+	$term = function_exists( 'rpt_get_product_cat_by_path' ) ? rpt_get_product_cat_by_path( $slug ) : null;
+
+	if ( ! $term instanceof WP_Term ) {
+		$term = get_term_by( 'slug', $slug, 'product_cat' );
+	}
+
+	if ( $term instanceof WP_Term ) {
+		return rpt_get_product_category_link( $term );
+	}
+
+	return $url;
+}
+
+/**
+ * Fix nav menu category links that accidentally point to media-library image URLs.
+ *
+ * @param WP_Post[] $items Menu items.
+ * @return WP_Post[]
+ */
+function rpt_fix_nav_menu_product_category_links( $items ) {
+	if ( empty( $items ) || is_admin() ) {
+		return $items;
+	}
+
+	foreach ( $items as $item ) {
+		if ( ! $item instanceof WP_Post || empty( $item->url ) ) {
+			continue;
+		}
+
+		if ( 'taxonomy' === $item->type && 'product_cat' === $item->object ) {
+			$term = get_term( (int) $item->object_id, 'product_cat' );
+
+			if ( $term instanceof WP_Term ) {
+				$item->url = rpt_get_product_category_link( $term );
+			}
+
+			continue;
+		}
+
+		$item->url = rpt_resolve_product_category_url_from_media( $item->url );
+	}
+
+	return $items;
+}
+add_filter( 'wp_nav_menu_objects', 'rpt_fix_nav_menu_product_category_links', 20 );
+
+/**
  * Whether a sidebar category item should show as active.
  *
  * @param WP_Term $term Category term.

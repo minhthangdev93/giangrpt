@@ -282,6 +282,14 @@ function rpt_get_home_category_items() {
 				continue;
 			}
 
+			if ( function_exists( 'rpt_resolve_product_category_url_from_media' ) ) {
+				$url = rpt_resolve_product_category_url_from_media( $url );
+
+				if ( '' === $url ) {
+					$url = rpt_resolve_product_category_url_from_media( $image );
+				}
+			}
+
 			$items[] = array(
 				'term'  => null,
 				'label' => $label,

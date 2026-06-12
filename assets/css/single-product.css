@@ -101,7 +101,8 @@
 .rpt-product-gallery__main {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +116,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .rpt-product-gallery__play {

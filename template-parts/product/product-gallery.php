@@ -35,8 +35,6 @@ if ( empty( $images ) ) {
 					data-rpt-gallery-main
 					src="<?php echo esc_url( $images[0]['full'] ); ?>"
 					alt="<?php echo esc_attr( $images[0]['alt'] ); ?>"
-					width="800"
-					height="600"
 					loading="eager"
 					decoding="async"
 				/>

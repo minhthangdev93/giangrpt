@@ -182,7 +182,56 @@ function rpt_flat_product_post_type_link( $permalink, $post ) {
 add_filter( 'post_type_link', 'rpt_flat_product_post_type_link', 10, 2 );
 
 /**
- * Resolve root-level slug conflicts between pages, categories, and products.
+ * Extract the front-end path from main query vars.
+ *
+ * @param array<string, mixed> $query_vars Query vars.
+ * @return string
+ */
+function rpt_flat_woocommerce_get_request_path( $query_vars ) {
+	if ( ! empty( $query_vars['pagename'] ) ) {
+		return trim( (string) $query_vars['pagename'], '/' );
+	}
+
+	if ( ! empty( $query_vars['attachment'] ) ) {
+		return trim( (string) $query_vars['attachment'], '/' );
+	}
+
+	if ( ! empty( $query_vars['name'] ) ) {
+		$post_type = isset( $query_vars['post_type'] ) ? (string) $query_vars['post_type'] : '';
+
+		if ( '' === $post_type || 'attachment' === $post_type ) {
+			return trim( (string) $query_vars['name'], '/' );
+		}
+	}
+
+	return '';
+}
+
+/**
+ * Clear query vars that would resolve to a page, attachment, or single post.
+ *
+ * @param array<string, mixed> $query_vars Query vars.
+ * @return array<string, mixed>
+ */
+function rpt_flat_woocommerce_clear_content_query_vars( $query_vars ) {
+	unset(
+		$query_vars['pagename'],
+		$query_vars['name'],
+		$query_vars['attachment'],
+		$query_vars['attachment_id'],
+		$query_vars['post_type'],
+		$query_vars['p'],
+		$query_vars['page_id']
+	);
+
+	return $query_vars;
+}
+
+/**
+ * Resolve root-level slug conflicts between pages, categories, products, and attachments.
+ *
+ * Category thumbnails often share the same slug as their product_cat term; without this,
+ * flat permalinks can resolve to the attachment and redirect to the raw uploads image URL.
  *
  * @param array<string, mixed> $query_vars Query vars.
  * @return array<string, mixed>
@@ -192,17 +241,11 @@ function rpt_flat_woocommerce_parse_request( $query_vars ) {
 		return $query_vars;
 	}
 
-	$path = '';
-
-	if ( ! empty( $query_vars['pagename'] ) ) {
-		$path = (string) $query_vars['pagename'];
-	} elseif ( ! empty( $query_vars['name'] ) && empty( $query_vars['post_type'] ) ) {
-		$path = (string) $query_vars['name'];
-	} elseif ( ! empty( $query_vars['name'] ) && ! empty( $query_vars['post_type'] ) && 'product' === $query_vars['post_type'] ) {
+	if ( ! empty( $query_vars['name'] ) && ! empty( $query_vars['post_type'] ) && 'product' === $query_vars['post_type'] ) {
 		return $query_vars;
 	}
 
-	$path = trim( $path, '/' );
+	$path = rpt_flat_woocommerce_get_request_path( $query_vars );
 
 	if ( '' === $path ) {
 		return $query_vars;
@@ -217,7 +260,7 @@ function rpt_flat_woocommerce_parse_request( $query_vars ) {
 	$term = rpt_get_product_cat_by_path( $path );
 
 	if ( $term instanceof WP_Term ) {
-		unset( $query_vars['pagename'], $query_vars['name'], $query_vars['attachment'] );
+		$query_vars = rpt_flat_woocommerce_clear_content_query_vars( $query_vars );
 		$query_vars['product_cat'] = $term->slug;
 
 		return $query_vars;
@@ -226,7 +269,7 @@ function rpt_flat_woocommerce_parse_request( $query_vars ) {
 	$product = get_page_by_path( $path, OBJECT, 'product' );
 
 	if ( $product instanceof WP_Post ) {
-		unset( $query_vars['pagename'] );
+		$query_vars = rpt_flat_woocommerce_clear_content_query_vars( $query_vars );
 		$query_vars['post_type'] = 'product';
 		$query_vars['name']      = $product->post_name;
 		$query_vars['product']   = $product->post_name;
@@ -235,6 +278,41 @@ function rpt_flat_woocommerce_parse_request( $query_vars ) {
 	return $query_vars;
 }
 add_filter( 'request', 'rpt_flat_woocommerce_parse_request', 11 );
+
+/**
+ * Fallback when WordPress still resolves a slug to an attachment instead of product_cat.
+ */
+function rpt_flat_woocommerce_attachment_to_category_redirect() {
+	if ( is_admin() || ! is_attachment() ) {
+		return;
+	}
+
+	$attachment = get_queried_object();
+
+	if ( ! $attachment instanceof WP_Post || 'attachment' !== $attachment->post_type ) {
+		return;
+	}
+
+	$slug = sanitize_title( $attachment->post_name );
+
+	if ( '' === $slug ) {
+		return;
+	}
+
+	$term = rpt_get_product_cat_by_path( $slug );
+
+	if ( ! $term instanceof WP_Term ) {
+		$term = get_term_by( 'slug', $slug, 'product_cat' );
+	}
+
+	if ( ! $term instanceof WP_Term || ! function_exists( 'rpt_get_product_category_link' ) ) {
+		return;
+	}
+
+	wp_safe_redirect( rpt_get_product_category_link( $term ), 301 );
+	exit;
+}
+add_action( 'template_redirect', 'rpt_flat_woocommerce_attachment_to_category_redirect', 0 );
 
 /**
  * Flush rewrite rules after permalink module update.
