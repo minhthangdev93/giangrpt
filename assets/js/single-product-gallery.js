@@ -50,8 +50,14 @@
     mainImg.src = images[current].full;
     mainImg.alt = images[current].alt || '';
 
-    thumbs.forEach(function (thumb, thumbIndex) {
+    thumbs.forEach(function (thumb) {
+      var thumbIndex = parseInt(thumb.getAttribute('data-index'), 10);
       var isActive = thumbIndex === current;
+
+      if (Number.isNaN(thumbIndex)) {
+        return;
+      }
+
       thumb.classList.toggle('is-active', isActive);
       thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
@@ -59,9 +65,13 @@
     togglePlayButton(current);
   }
 
-  thumbs.forEach(function (thumb, index) {
+  thumbs.forEach(function (thumb) {
     thumb.addEventListener('click', function () {
-      show(index);
+      var thumbIndex = parseInt(thumb.getAttribute('data-index'), 10);
+
+      if (!Number.isNaN(thumbIndex)) {
+        show(thumbIndex);
+      }
     });
   });
 

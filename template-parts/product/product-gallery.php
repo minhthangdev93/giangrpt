@@ -13,9 +13,12 @@ if ( ! $product instanceof WC_Product ) {
 	return;
 }
 
-$images      = function_exists( 'rpt_get_product_gallery_items' ) ? rpt_get_product_gallery_items( $product ) : array();
-$video_data  = function_exists( 'rpt_get_product_video_lightbox_data' ) ? rpt_get_product_video_lightbox_data( $product ) : null;
-$has_nav     = count( $images ) > 1;
+$images       = function_exists( 'rpt_get_product_gallery_items' ) ? rpt_get_product_gallery_items( $product ) : array();
+$video_data   = function_exists( 'rpt_get_product_video_lightbox_data' ) ? rpt_get_product_video_lightbox_data( $product ) : null;
+$has_nav      = count( $images ) > 1;
+$max_thumbs   = (int) apply_filters( 'rpt_product_gallery_max_thumbs', 5 );
+$max_thumbs   = max( 1, min( 5, $max_thumbs ) );
+$thumb_images = array_slice( $images, 0, $max_thumbs );
 $gallery_json = wp_json_encode( $images );
 
 if ( empty( $images ) ) {
@@ -72,7 +75,7 @@ if ( empty( $images ) ) {
 
 	<?php if ( $has_nav ) : ?>
 		<div class="rpt-product-gallery__thumbs" role="tablist" aria-label="<?php esc_attr_e( 'Ảnh sản phẩm', 'generatepress_child' ); ?>">
-			<?php foreach ( $images as $index => $image ) : ?>
+			<?php foreach ( $thumb_images as $index => $image ) : ?>
 				<button
 					type="button"
 					class="rpt-product-gallery__thumb<?php echo 0 === $index ? ' is-active' : ''; ?><?php echo ( isset( $image['type'] ) && 'video' === $image['type'] ) ? ' is-video' : ''; ?>"
