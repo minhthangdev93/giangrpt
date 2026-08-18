@@ -10,17 +10,17 @@ Repository này **chỉ chứa theme** — không chứa database, upload media 
 
 | Mục | Đường dẫn |
 |-----|-----------|
-| Home cPanel | `/home/cizuzaxe` |
-| WordPress site | `/home/cizuzaxe/giang.annamdiscovery.vn` |
-| **Deploy theme vào** | `/home/cizuzaxe/giang.annamdiscovery.vn/wp-content/themes/generatepress_child` |
+| Home cPanel | `/home/jicnuwfm` |
+| WordPress site | `/home/jicnuwfm/rpt-power.vn` |
+| **Deploy theme vào** | `/home/jicnuwfm/rpt-power.vn/wp-content/themes/generatepress_child` |
 
 ### Cách 1 — Clone từ GitHub (khuyến nghị)
 
 1. cPanel → **Git™ Version Control** → **Create**
 2. Clone URL: `https://github.com/minhthangdev93/giangrpt.git`
-3. Repository path: ví dụ `/home/cizuzaxe/repositories/giangrpt`
+3. Repository path: ví dụ `/home/jicnuwfm/repositories/giangrpt`
 4. **Deployment** → bật deployment, đặt:
-   - **Deployment path:** `/home/cizuzaxe/giang.annamdiscovery.vn/wp-content/themes/generatepress_child`
+   - **Deployment path:** `/home/jicnuwfm/rpt-power.vn/wp-content/themes/generatepress_child`
 5. **Deploy HEAD Commit** sau mỗi lần push lên GitHub
 
 ### Cách 2 — Push từ máy local
