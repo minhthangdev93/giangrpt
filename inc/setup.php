@@ -172,15 +172,3 @@ function rpt_get_asset_version( $relative_path ) {
 
 	return wp_get_theme()->get( 'Version' );
 }
-
-/**
- * Temporary admin notice to verify cPanel Git deploy on the new host.
- */
-function rpt_deploy_test_admin_notice() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-
-	echo '<div class="notice notice-success"><p><strong>RPT deploy OK</strong> — host mới <code>rpt-power.vn</code> đã nhận theme từ GitHub (2026-08-18).</p></div>';
-}
-add_action( 'admin_notices', 'rpt_deploy_test_admin_notice' );
